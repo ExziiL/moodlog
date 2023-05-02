@@ -38,9 +38,17 @@ const feelings = [
 	},
 ];
 
+enum Mood {
+	AWESOME = 'awesome',
+	GOOD = 'good',
+	NEUTRAL = 'neutral',
+	BAD = 'bad',
+	AWFUL = 'awful',
+}
+
 function FeelingsRating() {
-	const [mood, setMood] = React.useState(undefined);
 	const [comment, setComment] = React.useState('');
+	const [activeMood, setActiveMood] = React.useState<Mood>(Mood.NEUTRAL);
 
 	return (
 		<div className="flex flex-col">
@@ -55,7 +63,10 @@ function FeelingsRating() {
 									src={icon}
 									alt={alt}
 									description={description}
-									mood={mood}
+									className={activeMood === description.toLowerCase() ? 'border-2 rounded-md bg-gray-50' : ''}
+									onClick={() => {
+										setActiveMood(description.toLowerCase() as Mood);
+									}}
 								/>
 							);
 						})}

@@ -1,24 +1,21 @@
 import Image from 'next/image';
 import React from 'react';
 
-enum Mood {
-	AWESOME = 'awesome',
-	GOOD = 'good',
-	NEUTRAL = 'neutral',
-	BAD = 'bad',
-	AWFUL = 'awful',
-}
 interface MoodRatingProps {
+	className?: string;
 	src: string;
 	alt: string;
 	description: string;
 	hideText?: boolean;
-	mood?: Mood;
+	[key: string]: any;
 }
 
-function MoodRating({ src, alt, description, hideText }: MoodRatingProps) {
+function MoodRating({ src, alt, description, hideText, className, ...delegated }: MoodRatingProps) {
 	return (
-		<div className="flex flex-col items-center">
+		<div
+			className={`flex flex-col items-center w-16 p-2 ${className}`}
+			{...delegated}
+		>
 			<Image
 				src={src}
 				alt={alt}

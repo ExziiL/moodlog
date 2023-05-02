@@ -17,6 +17,9 @@ interface UserProviderProps {
 function UserProvider({ children }: UserProviderProps) {
 	const [user, setUser] = React.useState({});
 
+	// TODO: Fetch user data from Database on initial load
+	// TODO: useSWR
+
 	return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>;
 }
 
