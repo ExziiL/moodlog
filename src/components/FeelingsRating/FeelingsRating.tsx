@@ -51,19 +51,20 @@ function FeelingsRating() {
 	const [activeMood, setActiveMood] = React.useState<Mood>(Mood.NEUTRAL);
 
 	return (
-		<div className="flex flex-col">
-			<div className="space-y-20">
+		<div className="flex flex-col max-w-sm">
+			<div className="space-y-10">
 				<section>
 					<h2 className="w-full pb-2 text-4xl font-semibold">How are you feeling?</h2>
 					<div className="flex justify-between max-w-sm">
 						{feelings.map(({ icon, alt, description }) => {
+							const selectedMoodStyling = activeMood === description.toLowerCase() ? 'border-2 rounded-md bg-gray-50 shadow-sm' : '';
 							return (
 								<MoodRating
 									key={description}
 									src={icon}
 									alt={alt}
 									description={description}
-									className={activeMood === description.toLowerCase() ? 'border-2 rounded-md bg-gray-50' : ''}
+									className={selectedMoodStyling}
 									onClick={() => {
 										setActiveMood(description.toLowerCase() as Mood);
 									}}
@@ -72,23 +73,28 @@ function FeelingsRating() {
 						})}
 					</div>
 				</section>
-				<section className="flex flex-col w-fit">
+				<section className="flex flex-col w-full ">
 					<TextInput
 						multiline
 						required
 						label="Write a sentence"
 						type="text"
-						className="flex border-2 resize-none"
+						className="flex w-full border-2 resize-none"
 						rows={5}
-						cols={45}
+						// cols={39}
 						comment={comment}
 						setComment={setComment}
 					/>
-					<div className="self-end">
-						<Button>Submit</Button>
-					</div>
 				</section>
-				{comment}
+			</div>
+			<div className="self-end">
+				<Button>Submit</Button>
+			</div>
+
+			{/* Nebeninformationen, spaeter */}
+			<div className="pt-8 space-y-4">
+				<div>{activeMood}</div>
+				<div>{comment}</div>
 			</div>
 		</div>
 	);

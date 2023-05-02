@@ -13,7 +13,7 @@ interface MoodRatingProps {
 function MoodRating({ src, alt, description, hideText, className, ...delegated }: MoodRatingProps) {
 	return (
 		<div
-			className={`flex flex-col items-center w-16 p-2 ${className}`}
+			className={`flex flex-col items-center w-16 p-2  cursor-pointer ${className}`}
 			{...delegated}
 		>
 			<Image
