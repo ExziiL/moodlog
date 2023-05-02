@@ -1,4 +1,4 @@
-import FeelingRating from '@/components/FeelingRating/FeelingRating';
+import FeelingsRating from '@/components/FeelingsRating/FeelingsRating';
 import Layout from '@/layouts/Layout/Layout';
 
 export default function Home() {
@@ -6,7 +6,7 @@ export default function Home() {
 		<Layout>
 			<h1 className="text-4xl font-semibold text-center">Welcome back!</h1>
 			<section className="mt-32">
-				<FeelingRating />
+				<FeelingsRating />
 			</section>
 		</Layout>
 	);

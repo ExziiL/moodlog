@@ -4,28 +4,31 @@ interface TextInputProps {
 	id?: string;
 	multiline?: boolean;
 	label: string;
+	comment: string;
+	setComment: (comment: string) => void;
 	[key: string]: any;
 }
 
-function TextInput({ id, multiline, label, ...delegated }: TextInputProps) {
+function TextInput({ id, multiline, label, comment, setComment, ...delegated }: TextInputProps) {
 	const generatedId = React.useId();
 	const appliedId = id || generatedId;
 
+	const Tag = typeof multiline !== 'undefined' ? 'textarea' : 'input';
+
 	return (
-		<div className="text-input">
-			<label htmlFor={appliedId}>{label}</label>
-			{!multiline ? (
-				<input
-					id={appliedId}
+		<>
+			<form>
+				<label htmlFor={appliedId}>{label}</label>
+				<Tag
 					{...delegated}
-				/>
-			) : (
-				<textarea
 					id={appliedId}
-					{...delegated}
+					value={comment}
+					onChange={(event) => {
+						setComment(event.target.value);
+					}}
 				/>
-			)}
-		</div>
+			</form>
+		</>
 	);
 }
 
