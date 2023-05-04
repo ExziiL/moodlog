@@ -5,6 +5,8 @@ import awfulIcon from '@/assets/svgs/awful.svg';
 import badIcon from '@/assets/svgs/bad.svg';
 import goodIcon from '@/assets/svgs/good.svg';
 import neutralIcon from '@/assets/svgs/neutral.svg';
+import { UserContext } from '@/contexts/UserProvider';
+import { Mood } from '@/helpers/moodOptions';
 import Image from 'next/image';
 import Button from '../Button/Button';
 import MoodRating from '../MoodRating/MoodRating';
@@ -38,17 +40,19 @@ const feelings = [
 	},
 ];
 
-enum Mood {
-	AWESOME = 'awesome',
-	GOOD = 'good',
-	NEUTRAL = 'neutral',
-	BAD = 'bad',
-	AWFUL = 'awful',
-}
-
 function FeelingsRating() {
+	const { user, setUser } = React.useContext(UserContext);
+
 	const [comment, setComment] = React.useState('');
-	const [activeMood, setActiveMood] = React.useState<Mood>(Mood.NEUTRAL);
+	const [activeMood, setActiveMood] = React.useState<Mood>(user.currentRating);
+
+	const handleSubmit = () => {
+		setUser((prevUser) => ({
+			...prevUser,
+			currentRating: activeMood,
+			currentComment: comment,
+		}));
+	};
 
 	return (
 		<div className="flex flex-col max-w-sm">
@@ -88,7 +92,7 @@ function FeelingsRating() {
 				</section>
 			</div>
 			<div className="self-end">
-				<Button>Submit</Button>
+				<Button onClick={handleSubmit}>Submit</Button>
 			</div>
 
 			{/* Nebeninformationen, spaeter */}

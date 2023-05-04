@@ -12,7 +12,7 @@ function Button({ children, disabled, className, ...delegated }: ButtonProps) {
 		<button
 			{...delegated}
 			disabled={disabled}
-			className={` ${className} px-8 py-2 mx-auto mt-10 text-2xl font-light border border-black rounded-lg hover:bg-gray-100`}
+			className={` ${className} px-8 py-2 mx-auto text-2xl font-light border border-black rounded-lg hover:bg-gray-100`}
 		>
 			{children}
 		</button>
