@@ -1,5 +1,5 @@
 import Button from '@/components/Button/Button';
-import FeelingsEntry from '@/components/FeelingsEntry/FeelingsEntry';
+import FeelingsInput from '@/components/FeelingsInput/FeelingsInput';
 import Link from 'next/link';
 
 export default function FeelingsPage() {
@@ -7,7 +7,7 @@ export default function FeelingsPage() {
 		<>
 			<h1 className="text-4xl font-semibold text-center">Welcome back!</h1>
 			<section className="mt-12">
-				<FeelingsEntry />
+				<FeelingsInput />
 			</section>
 
 			<div className="mt-12">
