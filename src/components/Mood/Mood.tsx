@@ -5,7 +5,7 @@ interface MoodProps {
 	className?: string;
 	src: string;
 	alt: string;
-	description: string;
+	description?: string;
 	hideText?: boolean;
 	[key: string]: any;
 }
@@ -13,7 +13,7 @@ interface MoodProps {
 function Mood({ src, alt, description, hideText, className, ...delegated }: MoodProps) {
 	return (
 		<div
-			className={`flex flex-col items-center w-16 p-2  cursor-pointer ${className}`}
+			className={`flex flex-col items-center min-w-fit p-2 ${className}`}
 			{...delegated}
 		>
 			<Image

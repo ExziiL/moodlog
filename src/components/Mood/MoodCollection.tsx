@@ -10,7 +10,7 @@ import neutralIcon from '@/assets/svgs/neutral.svg';
 
 import Mood from './Mood';
 
-const feelings = [
+const moods = [
 	{
 		icon: awesomeIcon,
 		alt: 'Awesome Icon',
@@ -46,7 +46,7 @@ interface MoodCollectionProps {
 function MoodCollection({ activeMood, setActiveMood }: MoodCollectionProps) {
 	return (
 		<div className="flex justify-between max-w-sm">
-			{feelings.map(({ icon, alt, description }) => {
+			{moods.map(({ icon, alt, description }) => {
 				const selectedMoodStyling = activeMood === description.toLowerCase() ? 'border-2 rounded-md bg-gray-50 shadow-sm' : '';
 				return (
 					<Mood
@@ -54,7 +54,7 @@ function MoodCollection({ activeMood, setActiveMood }: MoodCollectionProps) {
 						src={icon}
 						alt={alt}
 						description={description}
-						className={selectedMoodStyling}
+						className={`${selectedMoodStyling} cursor-pointer`}
 						onClick={() => {
 							setActiveMood(description.toLowerCase() as MoodOption);
 						}}
