@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 
-interface MoodRatingProps {
+interface MoodProps {
 	className?: string;
 	src: string;
 	alt: string;
@@ -10,7 +10,7 @@ interface MoodRatingProps {
 	[key: string]: any;
 }
 
-function MoodRating({ src, alt, description, hideText, className, ...delegated }: MoodRatingProps) {
+function Mood({ src, alt, description, hideText, className, ...delegated }: MoodProps) {
 	return (
 		<div
 			className={`flex flex-col items-center w-16 p-2  cursor-pointer ${className}`}
@@ -25,4 +25,4 @@ function MoodRating({ src, alt, description, hideText, className, ...delegated }
 	);
 }
 
-export default MoodRating;
+export default Mood;

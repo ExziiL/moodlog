@@ -1,4 +1,4 @@
-export enum Mood {
+export enum MoodOption {
 	AWESOME = 'awesome',
 	GOOD = 'good',
 	NEUTRAL = 'neutral',
