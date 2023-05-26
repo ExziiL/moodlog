@@ -4,12 +4,12 @@ interface TextInputProps {
 	id?: string;
 	multiline?: boolean;
 	label: string;
-	comment: string;
-	setComment: (comment: string) => void;
+	value: string;
+	// setValue: (comment: string) => void;
 	[key: string]: any;
 }
 
-function TextInput({ id, multiline, label, comment, setComment, ...delegated }: TextInputProps) {
+function TextInput({ id, multiline, label, value, setValue, ...delegated }: TextInputProps) {
 	const generatedId = React.useId();
 	const appliedId = id || generatedId;
 
@@ -17,17 +17,16 @@ function TextInput({ id, multiline, label, comment, setComment, ...delegated }: 
 
 	return (
 		<>
-			<form>
-				<label htmlFor={appliedId}>{label}</label>
-				<Tag
-					{...delegated}
-					id={appliedId}
-					value={comment}
-					onChange={(event) => {
-						setComment(event.target.value);
-					}}
-				/>
-			</form>
+			<label htmlFor={appliedId}>{label}</label>
+			<Tag
+				{...delegated}
+				id={appliedId}
+				value={value}
+				onChange={(event) => {
+					setValue(event.target.value);
+				}}
+				className="flex flex-col w-full max-w-sm border-2 resize-none"
+			/>
 		</>
 	);
 }

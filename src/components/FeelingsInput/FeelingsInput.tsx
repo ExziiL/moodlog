@@ -22,17 +22,19 @@ function FeelingsRating() {
 						setActiveMood={setActiveMood}
 					/>
 				</div>
-				<TextInput
-					multiline
-					required
-					label="What made your day special?"
-					type="text"
-					placeholder="Write something about your day..."
-					className="flex flex-col w-full border-2 resize-none"
-					rows={5}
-					comment={comment}
-					setComment={setComment}
-				/>
+				<form>
+					<TextInput
+						multiline
+						required
+						label="What made your day special?"
+						type="text"
+						placeholder="Write something about your day..."
+						className="flex flex-col w-full border-2 resize-none"
+						rows={5}
+						value={comment}
+						setValue={setComment}
+					/>
+				</form>
 			</div>
 			<div className="w-full mt-4">
 				<Button
