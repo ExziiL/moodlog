@@ -1,3 +1,4 @@
+import { useRouter } from 'next/navigation';
 import * as React from 'react';
 
 import { UserContext } from '@/contexts/UserProvider';
@@ -7,6 +8,8 @@ import MoodCollection from '../Mood/MoodCollection';
 import TextInput from '../TextInput/TextInput';
 
 function FeelingsRating() {
+	const router = useRouter();
+
 	const { user, handleSubmit } = React.useContext(UserContext);
 
 	const [comment, setComment] = React.useState('');
@@ -43,6 +46,7 @@ function FeelingsRating() {
 						handleSubmit(activeMood, comment);
 						setComment('');
 						setActiveMood(MoodOption.NEUTRAL);
+						router.push('/history');
 					}}
 				>
 					Eintrag bestätigen
