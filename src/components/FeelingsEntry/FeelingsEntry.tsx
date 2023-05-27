@@ -14,17 +14,17 @@ interface FeelingsEntryProps {
 	entry: {
 		rating: MoodOption;
 		comment: string;
-		date: DateTime;
+		date: string;
 	};
 }
 
 function FeelingsEntry({ entry }: FeelingsEntryProps) {
 	const mood = entry.rating;
 
-	const weekday = entry.date.weekdayLong;
-	const day = entry.date.day;
-	const month = entry.date.monthLong;
-	const year = entry.date.year;
+	const weekday = DateTime.fromISO(entry.date).weekdayLong;
+	const day = DateTime.fromISO(entry.date).day;
+	const month = DateTime.fromISO(entry.date).monthLong;
+	const year = DateTime.fromISO(entry.date).year;
 
 	const date = `${day}. ${month} ${year}`;
 

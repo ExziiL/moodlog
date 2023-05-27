@@ -1,7 +1,7 @@
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 
-import DatabaseProvider from '@/contexts/DatabaseProvider';
+import DatabaseProvider from '@/contexts/DatabaseContext';
 import UserProvider from '@/contexts/UserProvider';
 import Layout from '@/layouts/Layout/Layout';
 

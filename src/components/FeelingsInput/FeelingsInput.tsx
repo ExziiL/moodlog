@@ -13,7 +13,7 @@ function FeelingsRating() {
 	const { user, handleSubmit } = React.useContext(UserContext);
 
 	const [comment, setComment] = React.useState('');
-	const [activeMood, setActiveMood] = React.useState<MoodOption>(user.currentRating);
+	const [activeMood, setActiveMood] = React.useState<MoodOption>(user?.currentRating || MoodOption.NEUTRAL);
 
 	return (
 		<div className="flex flex-col max-w-sm">
