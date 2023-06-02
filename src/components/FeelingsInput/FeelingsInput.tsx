@@ -5,7 +5,7 @@ import { UserContext } from '@/contexts/UserProvider';
 import { MoodOption } from '@/helpers/moodOptions';
 import Button from '../Button/Button';
 import MoodCollection from '../Mood/MoodCollection';
-import TextInput from '../TextInput/TextInput';
+import TextareaInput from '../TextareaInput/TextareaInput';
 
 function FeelingsRating() {
 	const router = useRouter();
@@ -26,7 +26,7 @@ function FeelingsRating() {
 					/>
 				</div>
 				<form>
-					<TextInput
+					<TextareaInput
 						multiline
 						required
 						label="What made your day special?"

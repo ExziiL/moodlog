@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface TextInputProps {
+interface TextareaInputProps {
 	id?: string;
 	multiline?: boolean;
 	label: string;
@@ -9,26 +9,24 @@ interface TextInputProps {
 	[key: string]: any;
 }
 
-function TextInput({ id, multiline, label, value, setValue, ...delegated }: TextInputProps) {
+function TextareaInput({ id, multiline, label, value, setValue, ...delegated }: TextareaInputProps) {
 	const generatedId = React.useId();
 	const appliedId = id || generatedId;
-
-	const Tag = typeof multiline !== 'undefined' ? 'textarea' : 'input';
 
 	return (
 		<>
 			<label htmlFor={appliedId}>{label}</label>
-			<Tag
+			<textarea
 				{...delegated}
 				id={appliedId}
 				value={value}
 				onChange={(event) => {
 					setValue(event.target.value);
 				}}
-				className="flex flex-col w-full max-w-sm border-2 resize-none"
+				className="flex flex-col w-full max-w-sm px-2 py-1 border-2 resize-none"
 			/>
 		</>
 	);
 }
 
-export default TextInput;
+export default TextareaInput;
