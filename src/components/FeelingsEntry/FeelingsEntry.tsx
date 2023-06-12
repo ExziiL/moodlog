@@ -9,6 +9,7 @@ import goodIcon from '@/assets/svgs/good.svg';
 import neutralIcon from '@/assets/svgs/neutral.svg';
 
 import Mood from '../Mood/Mood';
+import EntryDelete from './EntryDelete';
 
 interface FeelingsEntryProps {
 	entry: {
@@ -19,6 +20,8 @@ interface FeelingsEntryProps {
 }
 
 function FeelingsEntry({ entry }: FeelingsEntryProps) {
+	const [isHovered, setIsHovered] = React.useState(false);
+
 	const mood = entry.rating;
 
 	const weekday = DateTime.fromISO(entry.date).weekdayLong;
@@ -36,19 +39,37 @@ function FeelingsEntry({ entry }: FeelingsEntryProps) {
 		awful: awfulIcon,
 	};
 
+	let timer: string | number | NodeJS.Timeout | undefined;
+	const handleMouseEnter = () => {
+		timer = setTimeout(() => {
+			setIsHovered(true);
+		}, 200);
+	};
+	const handleMouseLeave = () => {
+		clearTimeout(timer);
+		setIsHovered(false);
+	};
+
 	return (
-		<div className="max-w-sm">
+		<div
+			className="max-w-sm"
+			onMouseEnter={handleMouseEnter}
+			onMouseLeave={handleMouseLeave}
+		>
 			<div className="flex space-x-4">
 				<div className="text-xl font-bold">{weekday}</div>
 				<div>{date}</div>
 			</div>
-			<div className="flex items-center space-x-4">
-				<Mood
-					src={moodIconMapping[mood]}
-					alt={`${mood} Icon`}
-					className=""
-				/>
-				<div>{entry.comment}</div>
+			<div className="relative flex space-x-4">
+				<div className="flex items-center">
+					<Mood
+						src={moodIconMapping[mood]}
+						alt={`${mood} Icon`}
+						className=""
+					/>
+					<div>{entry.comment}</div>
+				</div>
+				{isHovered && <EntryDelete />}
 			</div>
 		</div>
 	);
