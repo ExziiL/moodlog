@@ -16,12 +16,14 @@ interface UserContextProps {
 	user: User | null;
 	setUser: React.Dispatch<React.SetStateAction<User | null>>;
 	handleSubmit: (rating: MoodOption, comment: string) => void;
+	deleteEntry: (date: string) => void;
 }
 
 export const UserContext = React.createContext<UserContextProps>({
 	user: null,
 	setUser: () => {},
 	handleSubmit: () => {},
+	deleteEntry: () => {},
 });
 
 // * ----------------- User Provider -----------------
@@ -90,7 +92,24 @@ function UserProvider({ children }: UserProviderProps) {
 		}
 	};
 
-	return <UserContext.Provider value={{ user, setUser, handleSubmit }}>{children}</UserContext.Provider>;
+	const deleteEntry = (date: string) => {
+		const newEntries = user?.previousEntries.filter((entry) => entry.date !== date);
+
+		if (newEntries && user) {
+			const newUser = {
+				...user,
+				previousEntries: newEntries,
+			};
+
+			setUser(newUser);
+
+			db?.setItem('userData', newUser)
+				.then(() => console.log('Data stored successfully!'))
+				.catch((err) => console.error(err));
+		}
+	};
+
+	return <UserContext.Provider value={{ user, setUser, handleSubmit, deleteEntry }}>{children}</UserContext.Provider>;
 }
 
 export default UserProvider;

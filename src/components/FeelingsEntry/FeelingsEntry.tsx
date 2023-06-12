@@ -69,7 +69,7 @@ function FeelingsEntry({ entry }: FeelingsEntryProps) {
 					/>
 					<div>{entry.comment}</div>
 				</div>
-				{isHovered && <EntryDelete />}
+				{isHovered && <EntryDelete id={entry.date} />}
 			</div>
 		</div>
 	);
