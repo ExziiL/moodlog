@@ -60,7 +60,7 @@ function FeelingsEntry({ entry }: FeelingsEntryProps) {
 				<div className="text-xl font-bold">{weekday}</div>
 				<div>{date}</div>
 			</div>
-			<div className="relative flex space-x-4">
+			<div className="relative flex w-auto space-x-4">
 				<div className="flex items-center">
 					<Mood
 						src={moodIconMapping[mood]}

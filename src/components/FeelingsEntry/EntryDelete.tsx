@@ -18,10 +18,10 @@ function EntryDelete({ id }: EntryDeleteProps) {
 	};
 
 	return (
-		<div className={`absolute flex justify-end  pr-1 items-center right-0 w-fit h-full `}>
+		<div className={`absolute flex justify-end items-center right-0 w-fit h-full `}>
 			<div className={`${styles.blurLeft} bg-green-500 w-12 h-full`}></div>
 			<div
-				className="flex items-center justify-end w-10 h-full text-gray-200 bg-white cursor-pointer hover:text-gray-700"
+				className="flex items-center justify-end w-10 h-full pr-1 text-gray-200 bg-white cursor-pointer hover:text-gray-700"
 				onClick={handleEntryDelete}
 			>
 				<FiTrash2 className="w-6 h-6 " />
